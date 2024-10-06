@@ -28,7 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
-		<sonar.login>squ_47bbdd22e2dd9a1ccff7bd57a3761b1ad7c7a612</sonar.login>
+		<!-- <sonar.login>squ_47bbdd22e2dd9a1ccff7bd57a3761b1ad7c7a612</sonar.login> -->
 		<sonar.organization>abcenterprises</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
