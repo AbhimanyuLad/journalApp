@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import lombok.extern.slf4j.Slf4j;
 
 //import lombok.extern.slf4j.Slf4j;
 
@@ -14,8 +17,8 @@ import java.util.*;
 import net.enginnerringdigest.journalapp.entity.User;
 import net.enginnerringdigest.journalapp.repository.UserRepository;
 
-@Component
-// @Slf4j --- log.
+@Service
+@Slf4j //--- log.
 public class UserService {
     
     @Autowired

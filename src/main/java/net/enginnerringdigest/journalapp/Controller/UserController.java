@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 // import org.springframework.web.bind.annotation.PathVariable;
 // import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import net.enginnerringdigest.journalapp.api.response.WeatherResponse;
 import net.enginnerringdigest.journalapp.entity.User;
 import net.enginnerringdigest.journalapp.repository.UserRepository;
 import net.enginnerringdigest.journalapp.service.UserService;
+import net.enginnerringdigest.journalapp.service.WeatherService;
 
 @RestController
 @RequestMapping("/user")
@@ -31,10 +34,13 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping
-    public List<User> getAllUsers(){
-        return userService.getAll();
-    }
+    @Autowired
+    private WeatherService weatherService;
+
+    // @GetMapping
+    // public List<User> getAllUsers(){
+    //     return userService.getAll();
+    // }
 
   
 
@@ -57,6 +63,19 @@ public class UserController {
         userRepository.deleteByUserName(authentication.getName());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping
+    public ResponseEntity<?> greeting(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        WeatherResponse weatherResponse = weatherService.getWeather("Mumbai");
+        String greeting = "";
+        if (weatherResponse != null) {
+            greeting = ", Weather feels like " + weatherResponse.getCurrent().getFeelslike();
+        }
+        return new ResponseEntity<>("Hi " + authentication.getName() + greeting, HttpStatus.OK);
+    }
+    
+
 
 
 }

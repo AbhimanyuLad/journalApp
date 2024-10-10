@@ -3,6 +3,7 @@ package net.enginnerringdigest.journalapp.service;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-@Component
+@Service
 @Slf4j
 public class JournalEntryService {
 

@@ -9,3 +9,8 @@ logging:
     net:
       enginnerringdigest:
         journalapp:  ERROR
+
+
+weather:
+  api:
+    key: "578cf812375ff3a568bd4199a250db2a"
